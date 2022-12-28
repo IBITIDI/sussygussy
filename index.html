@@ -4,17 +4,21 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Responsive Sticky Navbar</title>
+      <title>Innoventions'23</title>
       <link rel="stylesheet" href="styles.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="pace.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/src/jquery.bez.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+<link rel="icon" type="image/x-icon" href="./images/circle-modified.png">
+<link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
       <div class="wrapper">
-            <img class="lum" src="./logogog.webp" alt="">
+            <img class="lum" src="./images/logogog.webp" alt="">
             <header id="home">
                   <nav id="navbar">
 
@@ -30,7 +34,7 @@
                               <ul>
                                     <li class="cool"><a href="#home">Home</a></li>
                                     <li class="cool"><a href="#about">About</a></li>
-                                    <li class="cool"><a href="#">Teams</a></li>
+                                    <li class="cool"><a href="#">Events</a></li>
                                     <li class="cool"><a href="#">Register</a></li>
                               </ul>
                         </div>
@@ -38,8 +42,17 @@
 
             </header>
 
+<br>
+<hr>
+<div class="countdown">00days : 00Hours : 00 Mins : 00Sec</div>
+<br>
+<br>
+<br>
             <div class="content">
+                  <h3 class="about">About</h3>
+                  <br>
                   <p id="about">
+                        <i class="fa  fa-arrow-up fa-2x"></i>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                   </p>
                   <p>
@@ -105,7 +118,46 @@ document: true,
                   ease: Expo.easeInOut
             })
        });
-      </script>
+        // Setup End Date for Countdown (getTime == Time in Milleseconds)
+let launchDate = new Date("April 20, 2023 11: 50:00").getTime();
+
+// Setup Timer to tick every 1 second
+let timer = setInterval(tick, 1000);
+
+function tick () {
+  // Get current time
+  let now = new Date().getTime();
+  // Get the difference in time to get time left until reaches 0
+  let t = launchDate - now;
+
+  // Check if time is above 0
+  if (t > 0) {
+    // Setup Days, hours, seconds and minutes
+    // Algorithm to calculate days...
+    let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    // prefix any number below 10 with a "0" E.g. 1 = 01
+    if (days < 10) { days = "0" + days; }
+    
+    // Algorithm to calculate hours
+    let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    if (hours < 10) { hours = "0" + hours; }
+
+    // Algorithm to calculate minutes
+    let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    if (mins < 10) { mins = "0" + mins; }
+
+    // Algorithm to calc seconds
+    let secs = Math.floor((t % (1000 * 60)) / 1000);
+    if (secs < 10) { secs = "0" + secs; }
+
+    // Create Time String
+    let time = `${days}d : ${hours}h : ${mins}m : ${secs}s`;
+
+    // Set time on document
+    document.querySelector('.countdown').innerText = time;
+  }
+}
+</script>
 
 </body>
 </html>
